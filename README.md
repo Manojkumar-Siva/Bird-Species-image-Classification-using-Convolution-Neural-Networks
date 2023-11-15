@@ -19,7 +19,7 @@ Essential Python packages: tensorflow, keras, os, scipy for image processing.
 
 # About Dataset:
 
-All images are 224 X 224 X 3 color images in jpg format. Data set includes a train set, test set and validation set. Each set contains 202 sub directories, one for each bird species.This is a very high quality dataset where there is only one bird in each image and the bird typically takes up at least 50% of the pixels in the image. As a result even a moderately complex model will achieve training and test accuracies in the mid 90% range
+All images are 224 X 224 X 3 color images in jpg format. Data set includes a train set, test set and validation set. Each set contains 202 sub directories, one for each bird species.This is a very high quality dataset where there is only one bird in each image and the bird typically takes up at least 50% of the pixels in the image. As a result even a moderately complex model will achieve training and test accuracies in the mid 90% range.
 ### Test Data:
 ```
 https://drive.google.com/file/d/1gn1kflszgSvnGEGk5L7dfIUQ-KWygryQ/view?usp=drive_link
