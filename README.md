@@ -16,6 +16,18 @@ Essential Python packages: tensorflow, keras, os, scipy for image processing.
 ![s](image-3.png)
 # Flow chart:
 ![Alt text](image-2.png)
+
+# Dataset:
+### Test Data:
+```
+https://drive.google.com/file/d/1gn1kflszgSvnGEGk5L7dfIUQ-KWygryQ/view?usp=drive_link
+```
+
+### Train Data:
+
+```
+https://drive.google.com/file/d/1fnDmsQY7wvgUke64jJxJiwPxXUrNsOn9/view?usp=drive_link
+```
 # Installation:
 1. Clone the repository:
 ```
