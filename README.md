@@ -22,13 +22,13 @@ Essential Python packages: tensorflow, keras, os, scipy for image processing.
 All images are 224 X 224 X 3 color images in jpg format. Data set includes a train set, test set and validation set. Each set contains 202 sub directories, one for each bird species.This is a very high quality dataset where there is only one bird in each image and the bird typically takes up at least 50% of the pixels in the image. As a result even a moderately complex model will achieve training and test accuracies in the mid 90% range.Images were gathered from internet searches by species name. Once the image files for a species was downloaded they were checked for the presemce of duplicate or near duplicate images. All duplicate or near duplicate images detected were deleted in order to prevent their being images common between the training, test and validation sets.
 ### Test Data:
 ```
-https://drive.google.com/file/d/1gn1kflszgSvnGEGk5L7dfIUQ-KWygryQ/view?usp=drive_link
+https://drive.google.com/file/d/1jTVINV7KSbSpweTkqsAez3VtTJ36rle6/view?usp=sharing
 ```
 
 ### Train Data:
 
 ```
-https://drive.google.com/file/d/1fnDmsQY7wvgUke64jJxJiwPxXUrNsOn9/view?usp=drive_link
+https://drive.google.com/file/d/1tHM5Xeytaf9KtC3ZD2egHITBG94jU3ya/view?usp=sharing
 ```
 # Installation:
 1. Clone the repository:
@@ -212,13 +212,13 @@ def ResNet50(input_shape = (64, 64, 3), classes = 7):
 
     return model
 
-model = ResNet50(input_shape = (224, 224, 3), classes = 202)
+model = ResNet50(input_shape = (224, 224, 3), classes = 201)
 
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 mc = ModelCheckpoint('EfficientNetB0-525-(224 X 224)- 98.97.h5', monitor = 'accuracy', verbose=1, save_best_only = True)
 
-epochs = 30
+epochs = 40
 batch_size = 64
 
 ## Fitting the model
@@ -250,10 +250,12 @@ def plot():
     plt.show()
 plot()
 
-evaluation =model.evaluate(test)
+metrics = pd.DataFrame(model.history.history)
+
+evaluation =model.evaluate(test_set)
 print(f"Test Accuracy: {evaluation[1] * 100:.2f}%")
 
-evaluation = model.evaluate(train)
+evaluation = model.evaluate(training_set)
 print(f"Train Accuracy: {evaluation[1] * 100:.2f}%")
 
 import tensorflow as tf
@@ -268,25 +270,27 @@ predicted_species = prediction.argmax()
 
 # Print the predicted species
 print('Predicted species:', predicted_species)
+predicted_species=plt.imshow(new_image)
 
 from sklearn.metrics import confusion_matrix, classification_report
 print(confusion_matrix(test, predicted_vals > 0.5))
-
-pd.DataFrame(classification_report(test.classes, predicted_vals > 0.5, output_dict=True))
 ```
 
 # Output:
 
 ## Training log:
-![Alt text](image.png)
+![Alt text](image-4.png)
 
 ## Predicted Species:
-![Alt text](image-1.png)
+![Alt text](image-5.png)
+
+## Model Accuracy Plot:
+![Alt text](image-6.png)
 # Result:
 The bird species classification model, utilizing CNN with ResNet50, demonstrates strong performance on both training and testing datasets:
 
-* The model achieved an accuracy of 84.13% on the test dataset, showcasing its ability to correctly classify the birds.
+* The model achieved an accuracy of 78.51% on the test dataset, showcasing its ability to correctly classify the birds.
 
-* During training, the model reached a high accuracy of 94.13% on the training dataset, indicating effective learning and generalization.
+* During training, the model reached a high accuracy of 94.25% on the training dataset, indicating effective learning and generalization.
 
 * These results suggest that the bird species classification model is both accurate and well-balanced. Further the model gives the classification of the species with the exact identification number.
